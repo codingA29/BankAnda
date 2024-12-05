@@ -15,7 +15,7 @@
         <input type="password" id="password" placeholder="Password" required>
 
         <button onclick="login()">Login</button>
-        <a href="register.html">Create Account or Password</a>
+        <a href="register.php">Create Account or Password</a>
     </div>
 
     <script src="script.js"></script>

@@ -8,37 +8,42 @@ function login() {
 
     if (email === storedEmail && password === storedPassword) {
         alert("Login berhasil!");
-        window.location.href = "dashboard.html";
+        window.location.href = "dashboard.php";
     } else {
         alert("Email atau Password salah!");
     }
 }
 
-// Fungsi Register
-function register() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("regEmail").value;
-    const password = document.getElementById("regPassword").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+// script.js
 
+function register() {
+    // Ambil nilai dari input form
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('regEmail').value;
+    const password = document.getElementById('regPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    // Validasi form
     if (password !== confirmPassword) {
-        alert("Password tidak cocok!");
-        return;
+        alert("Password dan Konfirmasi Password tidak cocok!");
+        return false; // Mencegah form submit
     }
 
-    localStorage.setItem("name", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
+    // Simpan data user (contoh dengan localStorage)
+    const userData = { name, email, password };
+    localStorage.setItem('user', JSON.stringify(userData));
 
-    alert("Registrasi berhasil!");
-    window.location.href = "index.html";
+    // Tampilkan notifikasi sukses dan arahkan ke halaman login
+    alert("Registrasi berhasil! Silakan login.");
+    window.location.href = "login.php";
+    return false; // Mencegah form submit
 }
 
 // Fungsi untuk Logout
 function logout() {
     localStorage.clear(); // Menghapus data pengguna
     alert("Anda berhasil logout.");
-    window.location.href = "index.html"; // Kembali ke halaman login
+    window.location.href = "index.php"; // Kembali ke halaman login
 }
 
 // Fungsi untuk Menampilkan Data Pengguna
